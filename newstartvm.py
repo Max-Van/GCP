@@ -26,18 +26,20 @@ from google.auth import compute_engine
 
 from google.oauth2 import service_account
 
-servername=input('Which Server? 1 : max-server; 2: win \n')
-if servername == '1':
-    SERVICE_ACCOUNT_FILE = '/Users/max/Downloads/maxproject101-039a1b605e52.json'
-    instance = 'max-server'
-    zone = 'asia-east2-c'
-elif servername == '2':
-    SERVICE_ACCOUNT_FILE = '/Users/max/Downloads/maxproject101-621fc75e5639.json'
-    instance = 'win'
-    zone = 'us-central1-a'
-else :
-    print('Invalid input, bye.')
-    quit()
+#servername=input('Which Server? 1 : max-server; 2: win \n')
+#if servername == '1':
+SERVICE_ACCOUNT_FILE = '/Users/max/Downloads/hubcrms-6acbadeaae4e.json'
+    #servername='max2'
+instance = 'max2'
+zone = 'us-central1-a'
+project = 'hubcrms'
+#elif servername == '2':
+#    SERVICE_ACCOUNT_FILE = '/Users/max/Downloads/maxproject101-621fc75e5639.json'
+#    instance = 'win'
+#    zone = 'us-central1-a'
+#else :
+#    print('Invalid input, bye.')
+#    quit()
 
 
 
@@ -50,7 +52,7 @@ credentials = service_account.Credentials.from_service_account_file(
 service = discovery.build('compute', 'v1', credentials=credentials)
 
 # Project ID for this request.
-project = 'maxproject101'  # TODO: Update placeholder value.
+#project = 'maxproject101'  # TODO: Update placeholder value.
 
 # The name of the zone for this request.
   # TODO: Update placeholder value.

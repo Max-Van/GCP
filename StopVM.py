@@ -16,32 +16,14 @@ BEFORE RUNNING:
 from pprint import pprint
 
 from googleapiclient import discovery
-#from oauth2client.client import GoogleCredentials
-from google.auth import compute_engine
+from oauth2client.client import GoogleCredentials
 
 #credentials = GoogleCredentials.get_application_default()
 
-#credentials = compute_engine.Credentials()
-
-
 from google.oauth2 import service_account
 
-servername=input('Which Server? 1 : max-server; 2: win \n')
-if servername == '1':
-    SERVICE_ACCOUNT_FILE = '/Users/max/Downloads/maxproject101-039a1b605e52.json'
-    instance = 'max-server'
-    zone = 'asia-east2-c'
-elif servername == '2':
-    SERVICE_ACCOUNT_FILE = '/Users/max/Downloads/maxproject101-621fc75e5639.json'
-    instance = 'win'
-    zone = 'us-central1-a'
-else :
-    print('Invalid input, bye.')
-    quit()
-
-
-
 SCOPES = ['https://www.googleapis.com/auth/cloud-platform','https://www.googleapis.com/auth/compute']
+SERVICE_ACCOUNT_FILE = '/Users/max/Downloads/maxproject101-621fc75e5639.json'
 
 credentials = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -53,12 +35,12 @@ service = discovery.build('compute', 'v1', credentials=credentials)
 project = 'maxproject101'  # TODO: Update placeholder value.
 
 # The name of the zone for this request.
-  # TODO: Update placeholder value.
+zone = 'us-central1-a'  # TODO: Update placeholder value.
 
 # Name of the instance resource to start.
-#instance = 'max-server'  # TODO: Update placeholder value.
+instance = 'win'  # TODO: Update placeholder value.
 
-request = service.instances().start(project=project, zone=zone, instance=instance)
+request = service.instances().stop(project=project, zone=zone, instance=instance)
 response = request.execute()
 
 # TODO: Change code below to process the `response` dict:
